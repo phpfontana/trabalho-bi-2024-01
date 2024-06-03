@@ -3,6 +3,7 @@ import socket
 import pandas as pd
 from datetime import datetime
 import time
+import json
 
 def stream_csv_data(folder_path, host='localhost', port=9999):
     """
@@ -41,9 +42,15 @@ def stream_csv_data(folder_path, host='localhost', port=9999):
                     bearing_3 = row[3]
                     bearing_4 = row[4]
 
-                    # Format the data
-                    data = f"timestamp: {timestamp}, bearing_1: {bearing_1}, bearing_2: {bearing_2}, bearing_3: {bearing_3}, bearing_4: {bearing_4}\n"
-                    
+                    # Send JSON data over the socket
+                    data = json.dumps({
+                        "timestamp": timestamp,
+                        "bearing_1": bearing_1,
+                        "bearing_2": bearing_2,
+                        "bearing_3": bearing_3,
+                        "bearing_4": bearing_4
+                    })
+
                     time.sleep(1)
 
                     # Send the data
