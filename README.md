@@ -1,3 +1,9 @@
 Trabalho Business Intelligence - 2024/01
 
-https://www.kaggle.com/datasets/vinayak123tyagi/bearing-dataset 
+````
+pip install -r requirements.txt
+````
+
+````
+streamlit run app/main/py
+````
